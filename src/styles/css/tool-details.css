@@ -1,0 +1,14 @@
+.tool-details{
+    padding-top: var(--padding-md);
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.background-wrap{
+    margin-top: var(--margin-lg);
+    margin-bottom: var(--margin-lg);
+}
+.background-thumbnail{
+    width: 100%;
+    border-radius: 0.3rem;
+}

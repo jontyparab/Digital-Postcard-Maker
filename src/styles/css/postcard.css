@@ -1,0 +1,43 @@
+.postcard-area{
+    padding: var(--padding-xl);
+    overflow:hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.postcard-wrap{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.overlay{
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: rgba(0,0,0,0.4);
+    user-select: none;
+}
+.postcard{
+    position: absolute;
+    inset: 0 0 0 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/* .postcard-area{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.postcard-wrap{
+}
+    
+.postcard{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+} */
