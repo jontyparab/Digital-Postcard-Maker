@@ -1,0 +1,52 @@
+:root {
+    /* Colors */
+    /* --color-1: #ce73fc;
+    --color-2: #fd82de;
+    --color-3: #f8aee6; */
+    --color-1: #85182a;
+    --color-2: #bd1f36;
+    --color-3: #e01e37;
+    --color-4: #48cae4;
+    --color-5: #90e0ef;
+    --color-6: #ade8f4;
+    --color-7: #e93a3d;
+    --color-8: #e35053;
+    --color-9: #e2a0a1;
+    --color-10: #b87c4b;
+    --color-11: #c5956b;
+    --color-12: #e7bc91;
+    --color-13: rgb(218, 209, 209);
+    --color-14: rgb(44, 43, 43);
+
+    /* Font Sizes */
+    --font-xs: 0.8rem;
+    --font-sm: 1rem;
+    --font-md: 1.2rem;
+    --font-lg: 1.4rem;
+    --font-xl: 1.6rem;
+    --font-xxl: 2rem;
+
+    /* Margin and Padding */
+    --spacing-unit: 1rem;
+
+    --margin: calc(0.2 * var(--spacing-unit));
+    --padding: calc(0.2 * var(--spacing-unit));
+
+    --margin-sm: var(--margin);
+    --margin-md: calc(2 * var(--margin));
+    --margin-lg: calc(4 * var(--margin));
+    --margin-xl: calc(8 * var(--margin));
+
+    --padding-sm: var(--padding);
+    --padding-md: calc(2 * var(--padding));
+    --padding-lg: calc(4 * var(--padding));
+    --padding-xl: calc(8 * var(--padding));
+
+
+    /* Shadows */
+    --shadow-xs: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --shadow-sm: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    --shadow-md: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    --shadow-lg: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    --shadow-xl: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
