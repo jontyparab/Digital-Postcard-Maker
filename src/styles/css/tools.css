@@ -1,26 +1,40 @@
+/* Main Design Region CSS */
 .designing{
     position: relative;
     top: 3rem;
     left: 0;
     height: calc(100vh - 3rem);
-    width: 100vw;
+    max-height: calc(100vh - 3rem);
+    width: 100%;
 }
+/* Main Design Region Ends */
+
 .designbar-wrap{
+    height: 100%;
     text-align: center;
     max-width: 2rem;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .designbar{
     list-style-type: none;
     font-size: var(--font-md);
 }
+.designitem-wrap{
+    text-align: center;
+    cursor: pointer;
+}
+.designitem-wrap.active{
+    border-bottom: solid 5px var(--color-4);
+}
 .designitem{
-    /* text-decoration: none; */
+    text-align: center;
     background-color: transparent;
     border: none;
     font-family: 'Marmelad', sans-serif;
     font-size: var(--font-xxl);
     cursor: pointer;
-    padding-bottom: var(--padding-xl);
+    padding-bottom: var(--padding-md);
     padding-top: var(--padding-xl);
     color: var(--color-9);
     text-underline-offset: 0.3rem;
@@ -38,9 +52,18 @@
     animation: headShake;
     animation-duration: 1s;
 }
-.designitem-wrap.active{
-    border-bottom: solid 5px var(--color-4);
-}
 .designitem-wrap.active .designitem{
+    color: var(--color-4);
+}
+
+/* Design item Labels */
+.designitem-label{
+    font-size: var(--font-sm);
+    font-family: 'Marmelad', sans-serif;
+    color: var(--color-13);
+    padding-bottom: var(--margin-lg);
+    cursor: pointer;
+}
+.designitem-wrap.active .designitem-label{
     color: var(--color-4);
 }

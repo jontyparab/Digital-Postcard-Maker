@@ -14,6 +14,7 @@
 .dice-wrap{
     font-size: var(--font-xl);
     color: var(--color-13);
+    margin-left: var(--margin-lg);
     animation: rotate;
     animation-duration: 20s;
     animation-timing-function: linear;
@@ -32,16 +33,17 @@
 }
 .navitem-wrap{
     text-align: center;
-    margin-left: var(--margin-lg);
-    margin-right: var(--margin-lg);
+    margin-left: var(--margin-xl);
+    transition: all 0.2s;
 }
 .navitem-wrap.active:not(.cog){
-    border-bottom: solid 3px var(--color-13);
+    border-bottom: solid 2px var(--color-13);
 }
 .navitem-wrap:hover:not(.active):not(.cog){
-    border-bottom: solid 3px var(--color-3);
+    border-bottom: solid 2px var(--color-3);
 }
 .navitem-wrap.cog{
+    margin-right: var(--margin-lg);
     transform: rotateZ(0deg);
     transition: transform 0.3s, color 0.3s;
 }
@@ -49,7 +51,7 @@
     color: white;
 }
 .navitem-wrap.cog:hover{
-    transform: rotateZ(90deg);
+    transform: rotateZ(-90deg);
 }
 .navitem {
     background-color: transparent;
