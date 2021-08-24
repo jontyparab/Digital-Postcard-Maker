@@ -1,14 +1,14 @@
 .postcard-area{
     height: 100%;
-    overflow:auto;
+    width: 100%;
+    overflow: auto;
 }
 .postcard{
-    height: 100%;
-    width: 100%;
-    max-height: fit-content;
-    max-width: fit-content;
+    height: fit-content;
+    width: fit-content;
     position: relative;
     display: inline-block;
+    margin: auto auto auto auto;
 }
 .background{
     height: 100%;
@@ -24,7 +24,7 @@
     left: 0;
     display: inline-block;
     color: var(--color-13);
-    font-size: var(--font-xl);
+    font-size: var(--font-sm);
     min-height: 2rem;
     min-width: 2rem;
     touch-action: none;

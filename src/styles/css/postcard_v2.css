@@ -1,0 +1,35 @@
+.postcard-area{
+    height: 100%; /* Height of the editing zone */
+    overflow:auto;
+}
+.postcard{
+    /* wrapper should take complete width and height */
+    height: 100%;
+    width: 100%;
+    /* max should be exactly equal to child background to bind interactable within it */
+    max-height: fit-content;
+    max-width: fit-content;
+    position: relative;
+    display: inline-block;
+}
+.background{
+    /* background should take complete width and height */
+    height: 100%;
+    width: 100%;
+    object-fit: fill; /* fill is default */
+    filter: brightness(40%);
+    -webkit-user-drag: none;
+    user-select: none;
+}
+.interactable{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    color: var(--color-13);
+    font-size: var(--font-xl);
+    min-height: 2rem;
+    min-width: 2rem;
+    touch-action: none;
+    user-select: none;
+}
