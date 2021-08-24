@@ -1,43 +1,32 @@
 .postcard-area{
-    padding: var(--padding-xl);
-    overflow:hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
+    overflow:auto;
 }
-.postcard-wrap{
+.postcard{
+    height: 100%;
+    width: 100%;
+    max-height: fit-content;
+    max-width: fit-content;
     position: relative;
-    height: 100%;
-    width: 100%;
+    display: inline-block;
 }
-.overlay{
-    position: absolute;
-    inset: 0 0 0 0;
-    background-color: rgba(0,0,0,0.4);
-    user-select: none;
-}
-.postcard{
-    position: absolute;
-    inset: 0 0 0 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-
-/* .postcard-area{
-    height: 100%;
-    width: 100%;
-    overflow:hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.postcard-wrap{
-}
-    
-.postcard{
+.background{
     height: 100%;
     width: 100%;
     object-fit: contain;
-} */
+    filter: brightness(40%);
+    -webkit-user-drag: none;
+    user-select: none;
+}
+.interactable{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    color: var(--color-13);
+    font-size: var(--font-xl);
+    min-height: 2rem;
+    min-width: 2rem;
+    touch-action: none;
+    user-select: none;
+}

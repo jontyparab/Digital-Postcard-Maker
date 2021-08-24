@@ -44,9 +44,7 @@
     text-decoration: underline;
 }
 .designitem-wrap:not(.active):hover .designitem{
-    color: var(--color-13);
-    animation: rubberBand;
-    animation-duration: 1s;
+    color: var(--color-6);
 }
 .designitem-wrap.active:hover .designitem{
     animation: headShake;
