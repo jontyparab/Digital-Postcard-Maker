@@ -20,18 +20,18 @@
         <li class="brand-wrap">
           <a class="brand c-13" href="#">Post Carder</a>
         </li>
-        <li class="navitem-wrap active">
-          <button class="navitem">Home</button>
-        </li>
-        <li class="navitem-wrap">
-          <button class="navitem">Create</button>
-        </li>
-        <li class="navitem-wrap">
-          <button class="navitem">Custom</button>
-        </li>
-        <li class="navitem-wrap cog">
-          <button class="navitem"><i class="fas fa-cog"></i></button>
-        </li>
+        <!-- <li class="navitem-wrap active">
+            <button class="navitem">Home</button>
+          </li>
+          <li class="navitem-wrap active">
+            <button class="navitem">Create</button>
+          </li>
+          <li class="navitem-wrap">
+            <button class="navitem">Custom</button>
+          </li>
+          <li class="navitem-wrap cog">
+            <button class="navitem"><i class="fas fa-cog"></i></button>
+          </li> -->
       </ul>
     </nav>
   </section>
@@ -39,53 +39,100 @@
   <section class="designing row">
     <aside class="designbar-wrap bgc-14 col-1">
       <ul class="designbar">
-        <li class="designitem-wrap">
+        <li class="designitem-wrap active" data-type="text">
           <button class="designitem" id="text-styling"><i class="fas fa-font"></i></button><br>
           <label for="text-styling" class="designitem-label">Text</label>
         </li>
-        <li class="designitem-wrap">
+        <li class="designitem-wrap" data-type="theme">
           <button class="designitem" id="background-styling"><i class="far fa-images"></i></button><br>
           <label for="background-styling" class="designitem-label">Theme</label>
         </li>
-        <li class="designitem-wrap active">
+        <li class="designitem-wrap" id="addimage" data-type="addimage">
           <button class="designitem" id="add-image"><i class="far fa-folder-open"></i></button><br>
           <label for="add-image" class="designitem-label">Add Image</label>
+          <input type="file" id="addImageFile" accept="image/*" hidden>
         </li>
-        <li class="designitem-wrap">
-          <button class="designitem" id="settings"><i class="fas fa-cog"></i></button><br>
-          <label for="settings" class="designitem-label">Settings</label>
+        <li class="designitem-wrap" data-type="settings">
+          <button class="designitem" id="more-settings"><i class="fas fa-cog"></i></button><br>
+          <label for="more-settings" class="designitem-label">Settings</label>
         </li>
       </ul>
     </aside>
 
-    <aside class="tool-details bgc-14 col-2">
-      <div class="background-wrap">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background-thumbnail">
+    <aside class="tool-details d-flex justify-content-center bgc-14 col-2">
+
+      <!-- Text -->
+      <div class="text-change" data-type="text">
+        <div class="setting">
+          <p class="setting-label">Font Family:</p>
+          <select class="dropdown font-family">
+          </select>
+        </div>
+
+        <div class="setting">
+          <p class="setting-label">Font Size:</p>
+          <select class="dropdown font-size">
+          </select>
+        </div>
+
+        <div class="setting">
+          <p class="setting-label">Font Color:</p>
+          <input class="font-color" type="color">
+        </div>
       </div>
-      <div class="background-wrap">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background-thumbnail">
+
+      <!-- Themes -->
+      <div class="themes" data-type="theme" hidden>
+        <div class="theme-wrap">
+          <img src="https://source.unsplash.com/ib3d1uX1LLc/1600x900" class="theme-thumbnail">
+        </div>
+        <div class="theme-wrap">
+          <img src="https://source.unsplash.com/W8KTS-mhFUE/1600x900" class="theme-thumbnail">
+        </div>
+        <div class="theme-wrap">
+          <img src="https://source.unsplash.com/-p-KCm6xB9I/1600x900" class="theme-thumbnail">
+        </div>
+        <div class="theme-wrap">
+          <img src="https://source.unsplash.com/wQLAGv4_OYs/1600x900" class="theme-thumbnail">
+        </div>
+        <div class="theme-wrap">
+          <img src="https://source.unsplash.com/_EMkxLdko9k/1600x900" class="theme-thumbnail">
+        </div>
+        <div class="theme-wrap">
+          <img src="https://source.unsplash.com/wpw8sHoBtSY/1600x900" class="theme-thumbnail">
+        </div>
+        <div class="theme-wrap">
+          <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="theme-thumbnail">
+        </div>
       </div>
-      <div class="background-wrap">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background-thumbnail">
+
+      <!-- Add Image -->
+
+
+      <!-- More Settings -->
+      <div class="more-settings" data-type="settings" hidden>
+        <div class="setting zoom">
+          <p class="setting-label">Zoom:</p>
+          <button class="zoomOut bgc-2"><i class="fas fa-search-minus"></i></button>
+          <output class="currentZoom bgc-2 c-13"></output>
+          <button class="zoomIn bgc-2"><i class="fas fa-search-plus"></i></button>
+        </div>
+
+        <div class="setting">
+          <p class="setting-label">Overlay:</p>
+          <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="50" class="slider overlay-slider">
+            <output class="slider-value overlay-slider-value d-flex align-items-center justify-content-center"></output>
+          </div>
+        </div>
       </div>
-      <div class="background-wrap">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background-thumbnail">
-      </div>
-      <div class="background-wrap">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background-thumbnail">
-      </div>
-      <div class="background-wrap">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background-thumbnail">
-      </div>
-      <div class="background-wrap">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background-thumbnail">
-      </div>
+
     </aside>
 
-    <!-- <main class="postcard-area bgc-14 offset-1 col-7"> -->
+    <!-- Main Postcard Section -->
     <main class="postcard-area d-flex align-items-center justify-content-center bgc-14 col-9">
       <div class="postcard">
-        <img src="https://source.unsplash.com/h15EgjRIKe4/1600x900" class="background">
+        <img src="https://source.unsplash.com/h15EgjRIKe4/600x600" class="background">
         <div class="interactable" contenteditable="true">FROM</div>
       </div>
     </main>
@@ -95,3 +142,71 @@
 </body>
 
 </html>
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>Round Range Slider</h1>
+
+<div class="slidecontainer">
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+  <p>Value: <span id="demo"></span></p>
+</div>
+
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  slider.style.background = `linear-gradient(90deg, red ${slider.value}%, pink ${slider.value}%)`;
+}
+</script>
+
+</body>
+</html> -->

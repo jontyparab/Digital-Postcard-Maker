@@ -1,0 +1,12 @@
+.dropdown{
+    width: 100%;
+    padding: var(--padding-md);
+    font-size: var(--font-md);
+    background-color: var(--color-2);
+    color: var(--color-13);
+    border-radius: 5px;
+}
+.dropdown-option{
+    background-color: var(--color-10);
+    color: var(--color-13);
+}

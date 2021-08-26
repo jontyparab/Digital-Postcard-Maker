@@ -1,0 +1,71 @@
+.tool-details{
+    padding-top: var(--padding-md);
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+/* Text */
+.text-change{
+    margin-top: var(--margin-xl);
+    margin-bottom: var(--margin-lg);
+}
+.font-color{
+    width: 100%;
+    height: 3rem;
+}
+/* Themes */
+.themes{
+    margin: auto auto;
+}
+.theme-wrap{
+    margin-top: var(--margin-lg);
+    margin-bottom: var(--margin-lg);
+    cursor: pointer;
+}
+.theme-wrap:hover{
+    transform: scale(1.02);
+}
+.theme-thumbnail{
+    width: 100%;
+    border-radius: 0.3rem;
+}
+
+/* More Settings */
+.more-settings{
+    margin-top: var(--margin-xl);
+    margin-bottom: var(--margin-lg);
+}
+.setting{
+    margin-top: var(--margin-xl);
+    margin-bottom: var(--margin-xl);
+}
+.setting-label{
+    margin-bottom: var(--margin-sm);
+    font-size: var(--font-md);
+    color: var(--color-13);
+}
+.zoom button{
+    font-size: var(--font-lg);
+    padding: var(--padding-md) var(--padding-xl) var(--padding-md) var(--padding-xl);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+}
+.currentZoom{
+    font-size: var(--font-lg);
+    padding: var(--padding-md);
+    border-radius: 0.3rem;
+    box-shadow: var(--shadow-xs);
+}
+.zoomOut{
+    border-radius: 1rem 0 0 1rem;
+}
+.zoomIn{
+    border-radius: 0 1rem 1rem 0;
+}
+.zoomOut:hover, .zoomIn:hover{
+    background-color: var(--color-4);
+}
+.zoomOut:active, .zoomIn:active{
+    box-shadow: var(--shadow-xs);
+}

@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    box-sizing: border-box;
+    font-size: var(--font-sm);
+}
+/* @import url(bootstrap.css); */
+@import url(base/variables.css);
+@import url(base/base.css);
+@import url(base/scrollbar.css);
+@import url(base/slider.css);
+@import url(base/dropdown.css);
+@import url(component/navbar.css);
+@import url(component/tools.css);
+@import url(component/tool-details.css);
+@import url(component/postcard.css);
+@import url(other/loading-ripple.css);
+@import url(other/bootstrap-grid.css);
+
+/* Node Modules */
+@import url('animate.css/animate.css');
