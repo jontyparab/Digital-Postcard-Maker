@@ -46,10 +46,6 @@
 .designitem-wrap:not(.active):hover .designitem{
     color: var(--color-6);
 }
-.designitem-wrap.active:hover .designitem{
-    animation: headShake;
-    animation-duration: 1s;
-}
 .designitem-wrap.active .designitem{
     color: var(--color-4);
 }

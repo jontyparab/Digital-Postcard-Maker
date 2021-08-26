@@ -1,20 +1,24 @@
 .postcard-area{
-    height: 100%;
     width: 100%;
-    overflow: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 .postcard{
-    height: fit-content;
     width: fit-content;
+    height: fit-content;
+    max-width: 100%;
+    max-height: 100%;
     position: relative;
     display: inline-block;
-    margin: auto auto auto auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .background{
-    height: 100%;
     width: 100%;
-    object-fit: contain;
-    filter: brightness(40%);
+    height: auto;
+    object-fit: fill;
+    /* filter: brightness(40%); */
     -webkit-user-drag: none;
     user-select: none;
 }
@@ -23,10 +27,12 @@
     top: 0;
     left: 0;
     display: inline-block;
+    word-break: break-word;
     color: var(--color-13);
     font-size: var(--font-sm);
-    min-height: 2rem;
-    min-width: 2rem;
+    min-height: 1rem;
+    min-width: 1rem;
+    outline-offset: 0px;
     touch-action: none;
     user-select: none;
 }
