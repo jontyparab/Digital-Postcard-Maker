@@ -8,8 +8,13 @@ class UI {
         // Text Elements
         this.fontFamilyEl = document.querySelector('.font-family');
         this.fontSizeEl = document.querySelector('.font-size');
-        this.fontColorEl = document.querySelector('.font-color');
-        this.toolDetailsEl = document.querySelectorAll('.themes, .more-settings, .text-change');
+        this.fontColorEl = document.querySelector('.color');
+        this.toolDetailsEl = document.querySelectorAll('.themes, .more-settings, .text-change, .addedThemes');
+        this.defaultFontStyles = {
+            'font-family': 'Georgia',
+            'font-size': '16px',
+            'color': '#ffffff'
+        };
 
         // Themes Elements
         this.themeThumbnails = document.querySelectorAll('.theme-thumbnail');
@@ -17,6 +22,7 @@ class UI {
         // Add Image Elements
         this.addImageFile = document.querySelector('#addImageFile');
         this.imageTheme = null;
+        this.addedThemesEl = document.querySelector('.addedThemes');
 
         // More Settings Elements
         this.currentZoomEl = document.querySelector('.currentZoom');
@@ -27,6 +33,7 @@ class UI {
         this.postCardEl = document.querySelector('.postcard');
         this.postCardBgEl = document.querySelector('.postcard .background');
         this.interactableEls = document.querySelectorAll('.interactable');
+        this.activeInteractable = null;
     }
 
     switchDesignItem = (e) => {
@@ -51,8 +58,8 @@ class UI {
         });
     }
 
-    switchTheme = (e) => {
-        const linkToImg = e.target.src;
+    switchTheme = (linkToImg) => {
+        // const linkToImg = e.target.src;
         this.postCardBgEl.src = linkToImg;
     }
 
@@ -66,20 +73,75 @@ class UI {
     }
 
     switchFontSize = () => {
-        this.switchProperty('font-size', this.fontSizeEl.value, 'rem');
+        this.switchProperty('font-size', this.fontSizeEl.value);
     }
 
     switchProperty = (property, value, units = null) => {
-        this.interactableEls.forEach((item) => {
-            item.style[property] = units ? value + units : value;
-        });
+        // this.interactableEls.forEach((item) => {
+        //     item.style[property] = units ? value + units : value;
+        // });
+        if (this.activeInteractable) {
+            this.activeInteractable.style[property] = units ? value + units : value;
+        }
     }
 
+    rgbToHex = (rgb) => {
+        const re = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
+        const match = re.exec(rgb);
+        if (match) {
+            for (let i = 1; i < 4; i++) {
+                const hex = Number(match[i]).toString(16);
+                match[i] = hex.length < 2 ? '0' + hex : hex;
+            }
+            // console.log("RGB", rgb, "MATCH", match);
+            return '#' + match[1] + match[2] + match[3];
+        } else {
+            return rgb;
+        }
+    }
+
+    focusInteractable = (e) => {
+        this.unfocusInteractable();
+        this.activeInteractable = e.target;
+        this.activeInteractable.classList.add('active'); // new interactable activated
+        this.setTextProperties();
+    }
+
+    unfocusInteractable = () => {
+        this.activeInteractable?.classList.remove('active'); // old interactable deactivated
+    }
+
+    setTextProperties = () => {
+        const propString = this.activeInteractable.style.cssText;
+        const inlineProps = {};
+        if (propString !== "") {
+            const propNameAndVals = propString.split(';').filter(i => i);
+            for (let propNameAndVal of propNameAndVals) {
+                const temp = propNameAndVal.split(':');
+                inlineProps[temp[0].trim()] = temp[1].trim();
+            }
+        }
+        this.fontFamilyEl.value = inlineProps['font-family'] || this.defaultFontStyles['font-family'];
+        this.fontSizeEl.value = inlineProps['font-size'] || this.defaultFontStyles['font-size'];
+        this.fontColorEl.value = this.rgbToHex(inlineProps['color']) || this.defaultFontStyles['color'];
+        // console.log(this.fontColorEl.value, inlineProps['color'], this.defaultFontStyles['color']);
+    };
+
     addImage = (e) => {
-        URL.revokeObjectURL(this.imageTheme);
-        this.imageTheme = URL.createObjectURL(e.target.files[0]);
-        this.postCardBgEl.src = this.imageTheme;
-        
+        // URL.revokeObjectURL(this.imageTheme);
+        e.target.files.forEach((file) => {
+            const linkToImg = URL.createObjectURL(file);
+            const divEl = document.createElement('div');
+            divEl.classList.add('theme-wrap');
+            const imageEl = document.createElement('img');
+            imageEl.classList.add('theme-thumbnail');
+            imageEl.setAttribute('src', linkToImg);
+            imageEl.addEventListener('click', (e) => ui.switchTheme(e.target.src));
+            divEl.appendChild(imageEl);
+            this.addedThemesEl.appendChild(divEl);
+            this.switchTheme(linkToImg);
+            this.postCardBgEl.src = linkToImg;
+        });
     }
 
     zoom = (val) => {
@@ -110,7 +172,7 @@ class UI {
     init = () => {
         this.zoom(0); // setting up zoom level
         this.fireEvent('input', this.overlaySlider); // initialising overlay slider
-        loadText({ 'font-family': this.fontFamilyEl, 'font-size': this.fontSizeEl, 'font-color': this.fontColorEl }); // Dynamically load Fonts
+        loadText({ 'default': this.defaultFontStyles, 'font-family': this.fontFamilyEl, 'font-size': this.fontSizeEl, 'color': this.fontColorEl }); // Dynamically load Fonts
         this.fireEvent('change', this.fontFamilyEl); // initialising font family
         this.fireEvent('change', this.fontSizeEl); // initialising font size
         this.fireEvent('input', this.fontColorEl); // initialising font color

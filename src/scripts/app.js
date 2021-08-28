@@ -13,7 +13,9 @@ const App = (function (ui) {
 
     // Theme Listeners
     ui.themeThumbnails.forEach((item) => {
-        item.addEventListener('click', ui.switchTheme);
+        item.addEventListener('click', (e)=>{
+            ui.switchTheme(e.target.src);
+        });
     });
 
     // Add Image Listener
@@ -27,6 +29,10 @@ const App = (function (ui) {
     ui.overlaySlider.addEventListener('input', ui.overlay);
 
     // Post Listeners
+    ui.interactableEls.forEach((interactable)=>{
+        interactable.addEventListener('click', ui.focusInteractable);
+    });
+    ui.postCardBgEl.addEventListener('click', ui.unfocusInteractable);
 
     return {
         init: () => {

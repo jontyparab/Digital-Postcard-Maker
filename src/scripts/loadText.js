@@ -9,7 +9,7 @@ export default function loadText(dropdowns) {
         return optionEl;
     });
     dropdowns['font-family'].append(...optionFontFamilyEls);
-    dropdowns['font-family'].value = 'Georgia';
+    dropdowns['font-family'].value = dropdowns['default']['font-family']; // initial value
 
     const optionFontSizeEls = FONT_SIZE().map((size)=>{
         const optionEl = document.createElement('option');
@@ -20,11 +20,11 @@ export default function loadText(dropdowns) {
         return optionEl;
     });
     dropdowns['font-size'].append(...optionFontSizeEls);
-    dropdowns['font-size'].value = '2.0';
+    dropdowns['font-size'].value = dropdowns['default']['font-size']; // initial value
 
 
 
-    dropdowns['font-color'].value = '#ffffff';
+    dropdowns['color'].value = dropdowns['default']['color']; // initial value
 }
 
 const FONT_FAMILY = [
@@ -53,8 +53,8 @@ const FONT_FAMILY = [
 
 const FONT_SIZE = ()=>{
     const sizeArr = [];
-    for(let i=0.5; i<=10; i=i+0.5){
-        sizeArr.push(i.toFixed(1));
+    for(let i=12; i<=80; i=i+4){
+        sizeArr.push(i+'px');
     }
     return sizeArr;
 };

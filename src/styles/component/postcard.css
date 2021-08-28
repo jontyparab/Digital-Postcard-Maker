@@ -28,11 +28,17 @@
     left: 0;
     display: inline-block;
     word-break: break-word;
-    color: var(--color-13);
-    font-size: var(--font-sm);
     min-height: 1rem;
     min-width: 1rem;
-    outline-offset: 0px;
+    /* Default Values */
+    font-family: Georgia, sans-serif;
+    font-size: 16px;    
+    color: #ffffff;
+
+    outline: none;
     touch-action: none;
     user-select: none;
+}
+.interactable.active{
+    border: solid 2px var(--color-10);
 }
