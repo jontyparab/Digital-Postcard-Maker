@@ -47,10 +47,9 @@
           <button class="designitem" id="background-styling"><i class="far fa-images"></i></button><br>
           <label for="background-styling" class="designitem-label">Theme</label>
         </li>
-        <li class="designitem-wrap" id="addimage" data-type="addimage">
-          <button class="designitem" id="add-image"><i class="far fa-folder-open"></i></button><br>
+        <li class="designitem-wrap" data-type="addimage">
+          <button class="designitem" id="add-image"><i class="fas fa-folder-plus"></i></button><br>
           <label for="add-image" class="designitem-label">Add Image</label>
-          <input type="file" id="addImageFile" accept="image/*" hidden>
         </li>
         <li class="designitem-wrap" data-type="settings">
           <button class="designitem" id="more-settings"><i class="fas fa-cog"></i></button><br>
@@ -77,12 +76,15 @@
 
         <div class="setting">
           <p class="setting-label">Font Color:</p>
-          <input class="font-color" type="color">
+          <input class="color" type="color">
         </div>
       </div>
 
       <!-- Themes -->
       <div class="themes" data-type="theme" hidden>
+        <div class="setting">
+          <p class="setting-label">Choose Background:</p>
+        </div>
         <div class="theme-wrap">
           <img src="https://source.unsplash.com/ib3d1uX1LLc/1600x900" class="theme-thumbnail">
         </div>
@@ -107,7 +109,13 @@
       </div>
 
       <!-- Add Image -->
-
+      <div class="addedThemes" data-type="addimage" hidden>
+        <div class="setting">
+          <button id="addimage" class="button">Add Image</button>
+          <p class="setting-label">Uploaded Images:</p>
+          <input type="file" id="addImageFile" accept="image/*" multiple hidden>
+        </div>
+      </div>
 
       <!-- More Settings -->
       <div class="more-settings" data-type="settings" hidden>
@@ -134,6 +142,7 @@
       <div class="postcard">
         <img src="https://source.unsplash.com/h15EgjRIKe4/600x600" class="background">
         <div class="interactable" contenteditable="true">FROM</div>
+        <div class="interactable" contenteditable="true">Start</div>
       </div>
     </main>
   </section>

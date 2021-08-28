@@ -9,26 +9,31 @@
     margin-top: var(--margin-xl);
     margin-bottom: var(--margin-lg);
 }
-.font-color{
+.color{
     width: 100%;
     height: 3rem;
 }
 /* Themes */
 .themes{
-    margin: auto auto;
+    /* margin: auto auto; */
 }
 .theme-wrap{
     margin-top: var(--margin-lg);
     margin-bottom: var(--margin-lg);
     cursor: pointer;
 }
-.theme-wrap:hover{
+.theme-wrap:hover .theme-thumbnail{
     transform: scale(1.02);
+    box-shadow: var(--shadow-md);
 }
 .theme-thumbnail{
     width: 100%;
     border-radius: 0.3rem;
+    transition: all 0.2s;
 }
+
+/* Add Images */
+
 
 /* More Settings */
 .more-settings{
