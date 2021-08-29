@@ -10,6 +10,7 @@ body{
 /* @import url(bootstrap.css); */
 @import url(base/variables.css);
 @import url(base/base.css);
+@import url(base/font.css);
 @import url(base/scrollbar.css);
 @import url(base/slider.css);
 @import url(base/dropdown.css);

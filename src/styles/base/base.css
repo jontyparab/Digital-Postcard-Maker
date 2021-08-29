@@ -1,13 +1,3 @@
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ballet&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
-
 /* Resetting Bootstrap Grid */
 .row, *[class^="col"]{
     margin: 0px !important;

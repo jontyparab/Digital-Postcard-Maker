@@ -1,5 +1,5 @@
 export default function loadText(dropdowns) {
-    const optionFontFamilyEls = FONT_FAMILY.map((font)=>{
+    const optionFontFamilyEls = FONT_FAMILY.map((font) => {
         const optionEl = document.createElement('option');
         const newContent = document.createTextNode(`${font}`);
         optionEl.appendChild(newContent);
@@ -11,7 +11,7 @@ export default function loadText(dropdowns) {
     dropdowns['font-family'].append(...optionFontFamilyEls);
     dropdowns['font-family'].value = dropdowns['default']['font-family']; // initial value
 
-    const optionFontSizeEls = FONT_SIZE().map((size)=>{
+    const optionFontSizeEls = FONT_SIZE().map((size) => {
         const optionEl = document.createElement('option');
         const newContent = document.createTextNode(`${size}`);
         optionEl.appendChild(newContent);
@@ -51,10 +51,10 @@ const FONT_FAMILY = [
     'Comic Sans MS',
 ];
 
-const FONT_SIZE = ()=>{
+const FONT_SIZE = () => {
     const sizeArr = [];
-    for(let i=12; i<=80; i=i+4){
-        sizeArr.push(i+'px');
+    for (let i = 12; i <= 80; i = i + 4) {
+        sizeArr.push(i + 'px');
     }
     return sizeArr;
 };
