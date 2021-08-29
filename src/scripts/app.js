@@ -7,19 +7,21 @@ const App = (function (ui) {
     });
 
     // Text Listeners
-    ui.fontFamilyEl.addEventListener('change', ui.switchFontFamily);
-    ui.fontSizeEl.addEventListener('change', ui.switchFontSize);
-    ui.fontColorEl.addEventListener('input', ui.switchFontColor);
+    ui.fontFamilyEl.addEventListener('change', (e) => ui.switchFontFamily(e.target.value));
+    ui.fontSizeEl.addEventListener('change', (e) => ui.switchFontSize(e.target.value));
+    ui.fontColorEl.addEventListener('input', (e) => ui.switchFontColor(e.target.value));
+    ui.addInteractableEl.addEventListener('click', ui.addInteractable);
+    ui.removeInteractableEl.addEventListener('click', ui.removeInteractable);
 
     // Theme Listeners
     ui.themeThumbnails.forEach((item) => {
-        item.addEventListener('click', (e)=>{
+        item.addEventListener('click', (e) => {
             ui.switchTheme(e.target.src);
         });
     });
 
     // Add Image Listener
-    document.querySelector('#addimage').addEventListener('click', ()=>ui.addImageFile.click());
+    document.querySelector('#addimage').addEventListener('click', () => ui.addImageFile.click());
     ui.addImageFile.addEventListener('change', ui.addImage);
 
 
@@ -27,10 +29,12 @@ const App = (function (ui) {
     document.querySelector('.zoomIn').addEventListener('click', () => ui.zoom(10));
     document.querySelector('.zoomOut').addEventListener('click', () => ui.zoom(-10));
     ui.overlaySlider.addEventListener('input', ui.overlay);
+    ui.exportImgEl.addEventListener('click', ui.exportImg);
 
     // Post Listeners
-    ui.interactableEls.forEach((interactable)=>{
+    ui.interactableEls.forEach((interactable) => {
         interactable.addEventListener('click', ui.focusInteractable);
+        interactable.addEventListener('paste', (e)=>ui.richTextToPlain(e));
     });
     ui.postCardBgEl.addEventListener('click', ui.unfocusInteractable);
 

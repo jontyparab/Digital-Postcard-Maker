@@ -78,6 +78,14 @@
           <p class="setting-label">Font Color:</p>
           <input class="color" type="color">
         </div>
+
+        <div class="setting">
+          <p class="setting-label">Text Boxes:</p>
+          <div class="d-flex justify-content-between">
+            <button id="addInteractable" class="button inline"><i class="fas fa-plus-circle"></i></button>
+            <button id="removeInteractable" class="button inline"><i class="fas fa-minus-circle"></i></button>
+          </div>
+        </div>
       </div>
 
       <!-- Themes -->
@@ -111,7 +119,7 @@
       <!-- Add Image -->
       <div class="addedThemes" data-type="addimage" hidden>
         <div class="setting">
-          <button id="addimage" class="button">Add Image</button>
+          <button id="addimage" class="button"><i class="fas fa-image"></i> Add Image</button>
           <p class="setting-label">Uploaded Images:</p>
           <input type="file" id="addImageFile" accept="image/*" multiple hidden>
         </div>
@@ -133,6 +141,11 @@
             <output class="slider-value overlay-slider-value d-flex align-items-center justify-content-center"></output>
           </div>
         </div>
+
+        <div class="setting">
+          <p class="setting-label">Convert to Image:</p>
+          <button id="exportImg" class="button">Export <i class="fas fa-download"></i></button>
+        </div>
       </div>
 
     </aside>
@@ -141,81 +154,13 @@
     <main class="postcard-area d-flex align-items-center justify-content-center bgc-14 col-9">
       <div class="postcard">
         <img src="https://source.unsplash.com/h15EgjRIKe4/600x600" class="background">
-        <div class="interactable" contenteditable="true">FROM</div>
-        <div class="interactable" contenteditable="true">Start</div>
+        <div class="interactable" contenteditable="true">
+          <p>Type Here...</p>
+        </div>
       </div>
     </main>
   </section>
 
-
 </body>
 
 </html>
-
-<!-- 
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.slidecontainer {
-  width: 100%;
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #04AA6D;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #04AA6D;
-  cursor: pointer;
-}
-</style>
-</head>
-<body>
-
-<h1>Round Range Slider</h1>
-
-<div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-  <p>Value: <span id="demo"></span></p>
-</div>
-
-<script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-  slider.style.background = `linear-gradient(90deg, red ${slider.value}%, pink ${slider.value}%)`;
-}
-</script>
-
-</body>
-</html> -->

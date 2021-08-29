@@ -10,6 +10,10 @@
     box-shadow: var(--shadow-sm);
     cursor: pointer;
 }
+.button.inline{
+    margin-left: var(--margin-sm);
+    margin-right: var(--margin-sm);
+}
 .button:hover{
     background-color: var(--color-1);
 } 

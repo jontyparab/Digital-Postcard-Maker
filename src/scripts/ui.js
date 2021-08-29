@@ -1,4 +1,7 @@
 import loadText from "./loadText";
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+/* in ES 5 */
 class UI {
     constructor() {
         // Nav and Tools Elements
@@ -10,6 +13,8 @@ class UI {
         this.fontSizeEl = document.querySelector('.font-size');
         this.fontColorEl = document.querySelector('.color');
         this.toolDetailsEl = document.querySelectorAll('.themes, .more-settings, .text-change, .addedThemes');
+        this.addInteractableEl = document.querySelector('#addInteractable');
+        this.removeInteractableEl = document.querySelector('#removeInteractable');
         this.defaultFontStyles = {
             'font-family': 'Georgia',
             'font-size': '16px',
@@ -28,6 +33,7 @@ class UI {
         this.currentZoomEl = document.querySelector('.currentZoom');
         this.overlaySlider = document.querySelector('.overlay-slider');
         this.overlayOutput = document.querySelector('.overlay-slider-value');
+        this.exportImgEl = document.querySelector('#exportImg');
 
         // Post Elements
         this.postCardEl = document.querySelector('.postcard');
@@ -63,17 +69,17 @@ class UI {
         this.postCardBgEl.src = linkToImg;
     }
 
-    switchFontFamily = () => {
-        this.fontFamilyEl.style.fontFamily = this.fontFamilyEl.value;
-        this.switchProperty('font-family', this.fontFamilyEl.value);
+    switchFontFamily = (val) => {
+        this.fontFamilyEl.style.fontFamily = val;
+        this.switchProperty('font-family', val);
     }
 
-    switchFontColor = () => {
-        this.switchProperty('color', this.fontColorEl.value);
+    switchFontColor = (val) => {
+        this.switchProperty('color', val);
     }
 
-    switchFontSize = () => {
-        this.switchProperty('font-size', this.fontSizeEl.value);
+    switchFontSize = (val) => {
+        this.switchProperty('font-size', val);
     }
 
     switchProperty = (property, value, units = null) => {
@@ -100,9 +106,39 @@ class UI {
         }
     }
 
+    addInteractable = () => {
+        const divEl = document.createElement('div');
+        divEl.classList.add('interactable');
+        divEl.setAttribute('contenteditable', true);
+        const textNode = document.createTextNode('Type Here...');
+        divEl.appendChild(textNode);
+        divEl.addEventListener('click', this.focusInteractable);
+        divEl.addEventListener('paste', ui.richTextToPlain);
+        this.postCardEl.appendChild(divEl);
+    }
+
+    removeInteractable = () => {
+        this.activeInteractable.remove();
+    }
+
+    richTextToPlain = (e) => {
+        e.preventDefault(); // Breaks the undo functionality
+        const clipboardText = e.clipboardData.getData('text/plain'); // Experimental Feature
+        const startPos = window.getSelection().anchorOffset;
+        const endPos = window.getSelection().focusOffset;
+        const content = e.target.textContent;
+        if (startPos < endPos) {
+            e.target.textContent = content.substring(0, startPos) + clipboardText + content.substring(endPos);
+        } else {
+            e.target.textContent = content.substring(0, endPos) + clipboardText + content.substring(startPos);
+        }
+        // Setting caret at len(startPos) + len(clipboardText) and len(endPos) + len(clipboardText) remaining.
+    }
+
     focusInteractable = (e) => {
         this.unfocusInteractable();
-        this.activeInteractable = e.target;
+        // newline in contenteditable creates child <p> tags hence always get there parent div.interactable element
+        this.activeInteractable = e.target.closest('.interactable');
         this.activeInteractable.classList.add('active'); // new interactable activated
         this.setTextProperties();
     }
@@ -118,13 +154,16 @@ class UI {
             const propNameAndVals = propString.split(';').filter(i => i);
             for (let propNameAndVal of propNameAndVals) {
                 const temp = propNameAndVal.split(':');
-                inlineProps[temp[0].trim()] = temp[1].trim();
+                // Remove quote from string containing whitespace in font-names
+                inlineProps[temp[0].trim()] = temp[1].trim().replace(/^"|"$/g, '');
             }
         }
+        // Styles values are updated in the dropdowns
         this.fontFamilyEl.value = inlineProps['font-family'] || this.defaultFontStyles['font-family'];
+        this.switchFontFamily(inlineProps['font-family'] || this.defaultFontStyles['font-family']); //changing dropdown font-style
+
         this.fontSizeEl.value = inlineProps['font-size'] || this.defaultFontStyles['font-size'];
         this.fontColorEl.value = this.rgbToHex(inlineProps['color']) || this.defaultFontStyles['color'];
-        // console.log(this.fontColorEl.value, inlineProps['color'], this.defaultFontStyles['color']);
     };
 
     addImage = (e) => {
@@ -140,7 +179,6 @@ class UI {
             divEl.appendChild(imageEl);
             this.addedThemesEl.appendChild(divEl);
             this.switchTheme(linkToImg);
-            this.postCardBgEl.src = linkToImg;
         });
     }
 
@@ -162,6 +200,14 @@ class UI {
         this.overlayOutput.style.left = `${e.target.value}%`;
         this.overlaySlider.style.background = `linear-gradient(90deg, var(--color-2) ${this.overlaySlider.value}%, var(--color-13) ${this.overlaySlider.value}%)`;
         this.postCardBgEl.style.filter = `brightness(${e.target.value}%)`;
+    }
+
+    exportImg = () => {
+        this.fireEvent('click', this.postCardBgEl);
+        domtoimage.toBlob(this.postCardEl).then(function (blob) {
+            saveAs(blob, 'Postcard.png');
+            console.log(blob);
+        });
     }
 
     fireEvent = (name, element) => {
