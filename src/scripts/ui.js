@@ -123,15 +123,16 @@ class UI {
 
     richTextToPlain = (e) => {
         e.preventDefault(); // Breaks the undo functionality
-        const clipboardText = e.clipboardData.getData('text/plain'); // Experimental Feature
-        const startPos = window.getSelection().anchorOffset;
-        const endPos = window.getSelection().focusOffset;
-        const content = e.target.textContent;
-        if (startPos < endPos) {
-            e.target.textContent = content.substring(0, startPos) + clipboardText + content.substring(endPos);
-        } else {
-            e.target.textContent = content.substring(0, endPos) + clipboardText + content.substring(startPos);
-        }
+        const clipboardText = e.clipboardData.getData('text/plain'); // ! Experimental Feature
+        document.execCommand("insertText", false, clipboardText); // ! deprecated 
+        // const startPos = window.getSelection().anchorOffset;
+        // const endPos = window.getSelection().focusOffset;
+        // const content = e.target.textContent;
+        // if (startPos < endPos) {
+        //     e.target.textContent = content.substring(0, startPos) + clipboardText + content.substring(endPos);
+        // } else {
+        //     e.target.textContent = content.substring(0, endPos) + clipboardText + content.substring(startPos);
+        // }
         // Setting caret at len(startPos) + len(clipboardText) and len(endPos) + len(clipboardText) remaining.
     }
 
